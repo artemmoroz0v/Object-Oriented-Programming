@@ -1,0 +1,15 @@
+{
+    "variant": 14,
+    "figures": [
+      "Pentagon",
+      "Hexagon",
+      "Octagon"
+    ],
+    "containers": [
+      "TBinaryTree",
+      "TLinkedList"
+    ],
+    "finished_labs": {
+      "lab1": "lab1"
+    }
+  }
