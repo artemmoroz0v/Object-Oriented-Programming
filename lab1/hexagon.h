@@ -11,7 +11,7 @@ class Hexagon : public Figure {
 
     virtual ~Hexagon();
 
-    size_t VerticesNumber();
+    size_t VertexesNumber();
     double Area();
     void Print(std::ostream &OutputStream);
 

@@ -17,7 +17,7 @@ Hexagon::Hexagon(std::istream &InputStream)
       OutputStream << a << " " << b << " " << c << " " << d << " " << e << " " << f << std:: endl;
   }
 
-  size_t Hexagon::VerticesNumber() {
+  size_t Hexagon::VertexesNumber() {
        size_t number = 6;
        return number;
    }

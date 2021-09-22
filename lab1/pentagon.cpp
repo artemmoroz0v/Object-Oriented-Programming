@@ -17,7 +17,7 @@
       
   }
 
-   size_t Pentagon::VerticesNumber() {
+   size_t Pentagon::VertexesNumber() {
        size_t number = 5;
        return number;
    }

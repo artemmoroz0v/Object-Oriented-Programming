@@ -19,7 +19,7 @@ Octagon::Octagon(std::istream &InputStream)
       OutputStream << a << " " << b << " " << c << " " << d << " " << e << " " << f  << " " << g << " " << h << std:: endl;
   }
 
-  size_t Octagon::VerticesNumber() {
+  size_t Octagon::VertexesNumber() {
        size_t number = 8;
        return number;
    }

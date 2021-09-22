@@ -11,7 +11,7 @@ class Octagon : public Figure {
 
     virtual ~Octagon();
 
-    size_t VerticesNumber();
+    size_t VertexesNumber();
     double Area();
     void Print(std::ostream &OutputStream);
 
