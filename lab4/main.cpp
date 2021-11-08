@@ -13,7 +13,7 @@ int main () {
     Pentagon c (std::cin);
     std:: cout << "The area of your figure is : " << c.Area() << std:: endl;
 
-    //lab2
+    //lab4
     TBinaryTree<Pentagon> tree;
     std:: cout << "Is tree empty? " << tree.Empty() << std:: endl;
     std:: cout << "And now, is tree empty? " << tree.Empty() << std:: endl;
