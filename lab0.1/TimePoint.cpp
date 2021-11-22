@@ -70,7 +70,7 @@ void TimePoint::AddSeconds(int s) {
         hours = x / 3600;
         minutes = ((x % 3600) / 60);
         seconds = (x % 3600) - (((x % 3600) / 60) * 60);
-        std:: cout << "After adding seconds your time is: "  << hours << ":" << minutes << ":" << seconds << std:: endl;
+        std:: cout << "After adding seconds your time is: " << hours << ":" << minutes << ":" << seconds << std:: endl;
     }
 }
 
