@@ -87,7 +87,7 @@ void TimePoint::RemoveSeconds(int s) {
     }
 }
 
-int TimePoint::IsBigger(const TimePoint &other ) {
+int TimePoint::IsBigger(const TimePoint &other) {
     int x = hours * 3600 + minutes * 60 + seconds;
     int y = other.hours * 3600 + other.minutes * 60 + other.seconds;
     if ((hours > other.hours) || (hours == other.hours && minutes > other.minutes) || (hours == other.hours && minutes == other.minutes && seconds > other.seconds)) {
