@@ -4,6 +4,7 @@ TimePoint::TimePoint() {
     hours = 0;
     minutes = 0;
     seconds = 0;
+    std:: cout << "The default time-ojbect has been created" << std:: endl;
 }
 
 TimePoint::TimePoint(int h, int m, int s) {
@@ -15,6 +16,7 @@ TimePoint::TimePoint(int h, int m, int s) {
     else {
         std:: cout << "Please enter positive numbers!" << std:: endl;
     }
+    std:: cout << "The time-object according to your parameters has been created" << std:: endl;
 }
 
 TimePoint::TimePoint(std::istream &is) {
@@ -24,12 +26,14 @@ TimePoint::TimePoint(std::istream &is) {
         std:: cout << "Invalind input. Enter again!" << std:: endl;
         is >> hours >> minutes >> seconds;
     }
+    std:: cout << "The time-object has been created via istream" << std:: endl;
 }
 
 TimePoint::TimePoint(const TimePoint& other) {
     hours = other.hours;
     minutes = other.minutes;
     seconds = other.seconds;
+    std:: cout << "The copy of your time-object has been created" << std:: endl;
 }
 
 void TimePoint::Difference(const TimePoint &other) {
@@ -70,7 +74,7 @@ void TimePoint::AddSeconds(int s) {
         hours = x / 3600;
         minutes = ((x % 3600) / 60);
         seconds = (x % 3600) - (((x % 3600) / 60) * 60);
-        std:: cout << "After adding seconds your time is: " << hours << ":" << minutes << ":" << seconds << std:: endl;
+        std:: cout << "After adding seconds your time is: "  << hours << ":" << minutes << ":" << seconds << std:: endl;
     }
 }
 
@@ -87,7 +91,7 @@ void TimePoint::RemoveSeconds(int s) {
     }
 }
 
-int TimePoint::IsBigger(const TimePoint &other) {
+int TimePoint::IsBigger(const TimePoint &other ) {
     int x = hours * 3600 + minutes * 60 + seconds;
     int y = other.hours * 3600 + other.minutes * 60 + other.seconds;
     if ((hours > other.hours) || (hours == other.hours && minutes > other.minutes) || (hours == other.hours && minutes == other.minutes && seconds > other.seconds)) {
