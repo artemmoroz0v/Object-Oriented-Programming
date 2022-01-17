@@ -1,8 +1,6 @@
 #ifndef TBINARYTREE_H
 #define TBINARYTREE_H
 #include "TBinaryTreeItem.h"
-#include "TIterator.h"
-
 template <class T>
 
 class TBinaryTree {
