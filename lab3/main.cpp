@@ -21,7 +21,7 @@ int main () {
     tree.Push(b);
     tree.Push(c);
     std:: cout << "The number of figures with area in [minArea, maxArea] is: " << tree.Count(0, 100000) << std:: endl;
-    std:: cout << "The result of searching the same-figure-counter is: " << tree.root->counter << std:: endl;
+    std:: cout << "The result of searching the same-figure-counter is: " << tree.root->ReturnCounter() << std:: endl;
     std:: cout << "The result of function named GetItemNotLess is: " << tree.GetItemNotLess(0, tree.root) << std:: endl;
     std:: cout << tree << std:: endl;
     tree.root = tree.Pop(tree.root, a);
