@@ -56,6 +56,7 @@ template <class T>
 std::ostream& operator<< (std::ostream& os, TBinaryTree<T>& tree){
     Print(os, tree.root);
     os << "\n";
+    return os;
 }
 
 template <class T>
@@ -149,6 +150,7 @@ std::shared_ptr <TBinaryTreeItem<T>> TBinaryTree<T>:: Pop(std::shared_ptr <TBina
             root->SetRight(Pop(root->GetRight(), pointer->GetPentagon()));
         }
     }
+    return root;
 }
 
 template <class T>
@@ -175,7 +177,7 @@ T& TBinaryTree<T>::GetItemNotLess(double area, std::shared_ptr <TBinaryTreeItem<
         return root->GetPentagon();
     }
     else {
-        GetItemNotLess(area, root->GetRight());
+        return GetItemNotLess(area, root->GetRight());
     }
 }
 
@@ -210,4 +212,4 @@ TBinaryTree<T>::~TBinaryTree() {
 
 #include "pentagon.h"
 template class TBinaryTree<Pentagon>;
-template std::ostream& operator<<(std::ostream& os, const TBinaryTree<Pentagon>& stack);
+template std::ostream& operator<<(std::ostream& os, TBinaryTree<Pentagon>& stack);

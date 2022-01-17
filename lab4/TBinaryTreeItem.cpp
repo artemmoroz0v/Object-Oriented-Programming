@@ -74,14 +74,13 @@ TBinaryTreeItem<T>::~TBinaryTreeItem() {
 }
 
 template <class T>
-std::ostream &operator<<(std::ostream &os, const TBinaryTreeItem<T> &obj)
+std::ostream &operator<<(std::ostream &os, TBinaryTreeItem<T> &obj)
 {
-    os << "Item: " << obj.pentagon << std::endl;
+    os << "Item: " << obj.GetPentagon() << std::endl;
     return os;
 }
 
 #include "pentagon.h"
 template class TBinaryTreeItem<Pentagon>;
-template std::ostream& operator<<(std::ostream& os, const TBinaryTreeItem<Pentagon> &obj);
-
+template std::ostream& operator<<(std::ostream& os, TBinaryTreeItem<Pentagon> &obj);
 
