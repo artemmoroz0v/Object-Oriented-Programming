@@ -21,21 +21,21 @@ Pentagon& TBinaryTreeItem::GetPentagon() {
 void TBinaryTreeItem::SetPentagon(const Pentagon& pentagon){
     this->pentagon = pentagon;
 }
-TBinaryTreeItem* TBinaryTreeItem::GetLeft(){
+std::shared_ptr<TBinaryTreeItem> TBinaryTreeItem::GetLeft(){
     return this->left;
 }
-TBinaryTreeItem* TBinaryTreeItem::GetRight(){
+std::shared_ptr<TBinaryTreeItem> TBinaryTreeItem::GetRight(){
     return this->right;
 }
 
 
-void TBinaryTreeItem::SetLeft(TBinaryTreeItem* item) {
+void TBinaryTreeItem::SetLeft(std::shared_ptr<TBinaryTreeItem> item) {
     if (this != NULL){
         this->left = item;
     }
 }
 
-void TBinaryTreeItem::SetRight(TBinaryTreeItem* item) {
+void TBinaryTreeItem::SetRight(std::shared_ptr<TBinaryTreeItem> item) {
     if (this != NULL){
         this->right = item;
     }
@@ -57,6 +57,7 @@ int TBinaryTreeItem::ReturnCounter() {
 }
 
 TBinaryTreeItem::~TBinaryTreeItem() {
+    std::cout << "Destructor TBinaryTreeItem was called\n";
 }
 
 

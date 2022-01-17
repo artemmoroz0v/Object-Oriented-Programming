@@ -8,10 +8,10 @@ TBinaryTreeItem(const Pentagon& pentagon);
 TBinaryTreeItem(const TBinaryTreeItem& other);
 Pentagon& GetPentagon();
 void SetPentagon(Pentagon& pentagon);
-TBinaryTreeItem* GetLeft();
-TBinaryTreeItem* GetRight();
-void SetLeft(TBinaryTreeItem* item);
-void SetRight(TBinaryTreeItem* item);
+std::shared_ptr<TBinaryTreeItem> GetLeft();
+std::shared_ptr<TBinaryTreeItem> GetRight();
+void SetLeft(std::shared_ptr<TBinaryTreeItem> item);
+void SetRight(std::shared_ptr<TBinaryTreeItem> item);
 void SetPentagon(const Pentagon& pentagon);
 void IncreaseCounter();
 void DecreaseCounter();
@@ -20,8 +20,8 @@ virtual ~TBinaryTreeItem();
 
 private:
 Pentagon pentagon;
-TBinaryTreeItem *left;
-TBinaryTreeItem *right;
+std::shared_ptr<TBinaryTreeItem> left;
+std::shared_ptr<TBinaryTreeItem> right;
 int counter;
 };
 #endif

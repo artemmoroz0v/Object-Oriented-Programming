@@ -4,11 +4,11 @@ TBinaryTree::TBinaryTree () {
     root = NULL;
 }
 
-TBinaryTreeItem* copy (TBinaryTreeItem* root) {
+std::shared_ptr<TBinaryTreeItem> copy (std::shared_ptr<TBinaryTreeItem> root) {
     if (!root) {
         return NULL;
     }
-    TBinaryTreeItem* root_copy = new TBinaryTreeItem (root->GetPentagon());
+    std::shared_ptr<TBinaryTreeItem> root_copy(new TBinaryTreeItem (root->GetPentagon()));
     root_copy->SetLeft(copy(root->GetLeft()));
     root_copy->SetRight(copy(root->GetRight()));
     return root_copy;
@@ -18,7 +18,7 @@ TBinaryTree::TBinaryTree (const TBinaryTree &other) {
     root = copy(other.root);
 }
 
-void Print (std::ostream& os, TBinaryTreeItem* node){
+void Print (std::ostream& os, std::shared_ptr<TBinaryTreeItem> node){
     if (!node){
         return;
     }
@@ -56,14 +56,15 @@ std::ostream& operator<< (std::ostream& os, TBinaryTree& tree){
 
 void TBinaryTree::Push (Pentagon &pentagon) {
     if (root == NULL) {
-    root = new TBinaryTreeItem(pentagon);
+    std::shared_ptr<TBinaryTreeItem> help(new TBinaryTreeItem(pentagon));
+    root = help;
     }
     else if (root->GetPentagon() == pentagon) {
         root->IncreaseCounter();
     }
     else {
-        TBinaryTreeItem* parent = root;
-        TBinaryTreeItem* current;
+        std::shared_ptr <TBinaryTreeItem> parent = root;
+        std::shared_ptr <TBinaryTreeItem> current;
         bool childInLeft = true;
         if (pentagon.GetArea() < parent->GetPentagon().GetArea()) {
             current = root->GetLeft();
@@ -89,7 +90,8 @@ void TBinaryTree::Push (Pentagon &pentagon) {
             }
         }
     }
-        current = new TBinaryTreeItem(pentagon);
+        std::shared_ptr <TBinaryTreeItem> item (new TBinaryTreeItem(pentagon));
+        current = item;
         if (childInLeft == true) {
             parent->SetLeft(current);
         }
@@ -99,14 +101,14 @@ void TBinaryTree::Push (Pentagon &pentagon) {
     }
 }
 
-TBinaryTreeItem* FMRST(TBinaryTreeItem* root) {
+std::shared_ptr <TBinaryTreeItem> FMRST(std::shared_ptr <TBinaryTreeItem> root) {
     if (root->GetLeft() == NULL) {
         return root;
     }
     return FMRST(root->GetLeft());
 }
 
-TBinaryTreeItem* TBinaryTree:: Pop(TBinaryTreeItem* root, Pentagon &pentagon) {
+std::shared_ptr <TBinaryTreeItem> TBinaryTree:: Pop(std::shared_ptr <TBinaryTreeItem> root, Pentagon &pentagon) {
     if (root == NULL) {
         return root;
     }
@@ -119,26 +121,23 @@ TBinaryTreeItem* TBinaryTree:: Pop(TBinaryTreeItem* root, Pentagon &pentagon) {
     else {
         //first case of deleting - we are deleting a list
         if (root->GetLeft() == NULL && root->GetRight() == NULL) {
-            delete root;
             root = NULL;
             return root;
         }
         //second case of deleting - we are deleting a verex with only one child
         else if (root->GetLeft() == NULL && root->GetRight() != NULL) {
-            TBinaryTreeItem* pointer = root;
+            std::shared_ptr <TBinaryTreeItem> pointer = root;
             root = root->GetRight();
-            delete pointer;
             return root;
         }
         else if (root->GetRight() == NULL && root->GetLeft() != NULL) {
-            TBinaryTreeItem* pointer = root;
+            std::shared_ptr <TBinaryTreeItem> pointer = root;
             root = root->GetLeft();
-            delete pointer;
             return root;
         }
         //third case of deleting 
         else {
-            TBinaryTreeItem* pointer = FMRST(root->GetRight());
+            std::shared_ptr <TBinaryTreeItem> pointer = FMRST(root->GetRight());
             root->GetPentagon().area = pointer->GetPentagon().GetArea();
             root->SetRight(Pop(root->GetRight(), pointer->GetPentagon()));
         }
@@ -146,7 +145,7 @@ TBinaryTreeItem* TBinaryTree:: Pop(TBinaryTreeItem* root, Pentagon &pentagon) {
     return root;
 }
 
-void RecursiveCount(double minArea, double maxArea, TBinaryTreeItem* current, int& ans) {
+void RecursiveCount(double minArea, double maxArea, std::shared_ptr<TBinaryTreeItem> current, int& ans) {
     if (current != NULL) {
         RecursiveCount(minArea, maxArea, current->GetLeft(), ans);
         RecursiveCount(minArea, maxArea, current->GetRight(), ans);
@@ -162,7 +161,7 @@ int TBinaryTree::Count(double minArea, double maxArea) {
     return ans;
 }
 
-Pentagon& TBinaryTree::GetItemNotLess(double area, TBinaryTreeItem* root) {
+Pentagon& TBinaryTree::GetItemNotLess(double area, std::shared_ptr <TBinaryTreeItem> root) {
     if (root->GetPentagon().GetArea() >= area) {
         return root->GetPentagon();
     }
@@ -171,17 +170,17 @@ Pentagon& TBinaryTree::GetItemNotLess(double area, TBinaryTreeItem* root) {
     }
 }
 
-void RecursiveClear(TBinaryTreeItem* current){
+void RecursiveClear(std::shared_ptr <TBinaryTreeItem> current){
     if (current!= NULL){
         RecursiveClear(current->GetLeft());
         RecursiveClear(current->GetRight());
-            delete current;
             current = NULL;
     }
 }
 
 void TBinaryTree::Clear(){
     RecursiveClear(root);
+    root = NULL;
 }
 
 bool TBinaryTree::Empty() {
