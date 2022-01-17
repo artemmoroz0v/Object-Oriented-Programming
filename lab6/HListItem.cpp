@@ -1,6 +1,7 @@
 #include <iostream>
 #include "HListItem.h"
 
+
 template <class T> HListItem<T>::HListItem(const std::shared_ptr<Pentagon> &pentagon) {
   this->pentagon = pentagon;
   this->next = nullptr;

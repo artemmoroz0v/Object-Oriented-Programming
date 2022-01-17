@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TLinkedList.h"
+#include "HListItem.h"
  
 template <class T> TLinkedList<T>::TLinkedList() {
   size_of_list = 0;
@@ -120,7 +121,7 @@ template <class T> void TLinkedList<T>::Remove(size_t position) {
       int k = 0;
       std::shared_ptr<HListItem<T>> prev_erase = front;
       std::shared_ptr<HListItem<T>> next_erase;
-      std::shared_ptr<HListItem<T>> del;F
+      std::shared_ptr<HListItem<T>> del;
       while( k+1 != position) {
         k++;
         prev_erase = prev_erase->next;

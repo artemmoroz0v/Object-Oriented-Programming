@@ -12,5 +12,4 @@ public:
   std::shared_ptr<T> pentagon;
   std::shared_ptr<HListItem<T>> next;
 };
-#include "HListItem.cpp"
 #endif
